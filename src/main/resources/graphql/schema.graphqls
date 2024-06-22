@@ -1,0 +1,24 @@
+type Cricketer {
+    id: ID!
+    name: String
+    group: Group
+}
+
+enum Group {
+    A
+    B
+    C
+    D
+    E
+}
+
+type Query {
+    findAll: [Cricketer]
+    findOne(id: ID): Cricketer
+}
+
+type Mutation {
+    create(name: String, group: Group): Cricketer
+    update(id: ID, name: String, group: Group): Cricketer
+    delete(id: ID): Cricketer
+}
