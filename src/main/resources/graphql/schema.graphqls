@@ -1,6 +1,9 @@
+scalar GregorianCalendar
+
 type Cricketer {
     id: ID!
     name: String
+    calendar:GregorianCalendar
     group: Group
 }
 
@@ -18,7 +21,7 @@ type Query {
 }
 
 type Mutation {
-    create(name: String, group: Group): Cricketer
+    create(name: String, calendar:GregorianCalendar, group: Group): Cricketer
     update(id: ID, name: String, group: Group): Cricketer
     delete(id: ID): Cricketer
 }

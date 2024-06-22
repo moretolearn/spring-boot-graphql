@@ -1,4 +1,6 @@
 package com.moretolearn.model;
 
-public record Cricketer(Integer id, String name, Group group) {
+import java.util.GregorianCalendar;
+
+public record Cricketer(Integer id, String name, GregorianCalendar calendar, Group group) {
 }

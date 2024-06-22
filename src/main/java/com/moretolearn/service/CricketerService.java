@@ -7,6 +7,7 @@ import com.moretolearn.model.Cricketer;
 import com.moretolearn.model.Group;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -26,21 +27,21 @@ public class CricketerService {
                 .filter(cricketer -> cricketer.id() == id).findFirst();
     }
 
-    public Cricketer create(String name, Group group) {
-        Cricketer cricketer = new Cricketer(id.incrementAndGet(), name, group);
+    public Cricketer create(String name, GregorianCalendar calendar, Group group) {
+        Cricketer cricketer = new Cricketer(id.incrementAndGet(), name, calendar, group);
         cricketers.add(cricketer);
         return cricketer;
     }
 
     public Cricketer delete(Integer id) {
         Cricketer cricketer = cricketers.stream().filter(c -> c.id() == id)
-                .findFirst().orElseThrow(() -> new IllegalArgumentException());
+                .findFirst().orElseThrow(() -> new IllegalArgumentException("No Cricketer"));
         cricketers.remove(cricketer);
         return cricketer;
     }
 
     public Cricketer update(Integer id, String name, Group group) {
-        Cricketer updatedCricketer = new Cricketer(id, name, group);
+        Cricketer updatedCricketer = new Cricketer(id, name,new GregorianCalendar(), group);
         Optional<Cricketer> optional = cricketers.stream()
                 .filter(c -> c.id() == id).findFirst();
 
@@ -56,10 +57,10 @@ public class CricketerService {
 
     @PostConstruct
     private void init() {
-    	cricketers.add(new Cricketer(id.incrementAndGet(), "MS Dhoni", Group.A));
-    	cricketers.add(new Cricketer(id.incrementAndGet(), "Rohit Sharma", Group.B));
-        cricketers.add(new Cricketer(id.incrementAndGet(), "Jasprit Bumrah", Group.C));
-        cricketers.add(new Cricketer(id.incrementAndGet(), "Rishabh pant", Group.D));
-        cricketers.add(new Cricketer(id.incrementAndGet(), "Suresh Raina", Group.E));
+    	cricketers.add(new Cricketer(id.incrementAndGet(), "MS Dhoni", new GregorianCalendar(),Group.A));
+    	cricketers.add(new Cricketer(id.incrementAndGet(), "Rohit Sharma",new GregorianCalendar(), Group.B));
+        cricketers.add(new Cricketer(id.incrementAndGet(), "Jasprit Bumrah",new GregorianCalendar(), Group.C));
+        cricketers.add(new Cricketer(id.incrementAndGet(), "Rishabh pant",new GregorianCalendar(), Group.D));
+        cricketers.add(new Cricketer(id.incrementAndGet(), "Suresh Raina",new GregorianCalendar(), Group.E));
     }
 }

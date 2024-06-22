@@ -9,6 +9,7 @@ import com.moretolearn.model.Cricketer;
 import com.moretolearn.model.Group;
 import com.moretolearn.service.CricketerService;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +33,8 @@ public class CricketerController {
     }
 
     @MutationMapping
-    public Cricketer create(@Argument String name, @Argument Group group) {
-        return cricketerService.create(name,group);
+    public Cricketer create(@Argument String name, @Argument GregorianCalendar calendar, @Argument Group group) {
+        return cricketerService.create(name,calendar,group);
     }
 
     @MutationMapping
