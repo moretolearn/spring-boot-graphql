@@ -15,6 +15,18 @@ enum Group {
     E
 }
 
+
+type Text {
+	fname: String
+	lname: String 
+}
+
+input TextI {
+	fname: String
+	lname: String 
+}
+
+
 type Query {
     findAll: [Cricketer]
     findOne(id: ID): Cricketer
@@ -24,4 +36,6 @@ type Mutation {
     create(name: String, calendar:GregorianCalendar, group: Group): Cricketer
     update(id: ID, name: String, group: Group): Cricketer
     delete(id: ID): Cricketer
+    text(text: TextI): Text
+    
 }

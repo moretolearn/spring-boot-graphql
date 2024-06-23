@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import com.moretolearn.model.Cricketer;
 import com.moretolearn.model.Group;
+import com.moretolearn.model.Text;
 import com.moretolearn.service.CricketerService;
 
 import java.util.GregorianCalendar;
@@ -45,5 +46,10 @@ public class CricketerController {
     @MutationMapping
     public Cricketer delete(@Argument Integer id) {
         return cricketerService.delete(id);
+    }
+    
+    @MutationMapping
+    public Text text(@Argument Text text) {
+    	return text;
     }
 }
